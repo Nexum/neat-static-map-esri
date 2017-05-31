@@ -77,7 +77,11 @@ module.exports = class StaticMapEsri extends Module {
             webmap.exportOptions.outputSize = size;
             webmap.operationalLayers[0].url = this.getBasemapService(options.type);
 
-            let requestOptions = {webmap: webmap}
+            let requestOptions = {
+                webmap: webmap,
+                format: format
+            };
+
             return this.service.ExportWebMapTask(requestOptions).then((response) => {
                 if (response.error) {
                     this.log.error("Error while generating static maps image " + response.error);
