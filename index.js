@@ -79,7 +79,7 @@ module.exports = class StaticMapEsri extends Module {
 
             let requestOptions = {
                 webmap: webmap,
-                format: format
+                format: options.format
             };
 
             return this.service.ExportWebMapTask(requestOptions).then((response) => {
