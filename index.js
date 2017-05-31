@@ -57,7 +57,7 @@ module.exports = class StaticMapEsri extends Module {
                 options.size = "300x300";
             }
             if (!options.format) {
-                options.format = "jpeg";
+                options.format = "JPG";
             }
 
             let size = options.size.split("x");
@@ -79,12 +79,12 @@ module.exports = class StaticMapEsri extends Module {
 
             let requestOptions = {
                 webmap: webmap,
-                format: options.format
+                format: options.format.toUpperCase()
             };
 
             return this.service.ExportWebMapTask(requestOptions).then((response) => {
                 if (response.error) {
-                    this.log.error("Error while generating static maps image " + response.error);
+                    this.log.error("Error while generating static maps image " + response.error.toString());
                     return resolve();
                 } else {
                     return Application.modules.file.importFromUrl(response.results[0].value.url).then(resolve, reject)
