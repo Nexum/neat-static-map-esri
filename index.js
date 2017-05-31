@@ -57,7 +57,7 @@ module.exports = class StaticMapEsri extends Module {
                 options.size = "300x300";
             }
             if (!options.format) {
-                options.format = "jpg";
+                options.format = "jpeg";
             }
 
             let size = options.size.split("x");
