@@ -78,8 +78,7 @@ module.exports = class StaticMapEsri extends Module {
             webmap.operationalLayers[0].url = this.getBasemapService(options.type);
 
             let requestOptions = {
-                webmap: webmap,
-                format: options.format.toUpperCase()
+                webmap: webmap
             };
 
             return this.service.ExportWebMapTask(requestOptions).then((response) => {
